@@ -1,41 +1,35 @@
-interface Teacher {
-  readonly firstName: string;        
-  readonly lastName: string;         
-  fullTimeEmployee: boolean;         
-  yearsOfExperience?: number;        
-  location: string;                  
-  [propName: string]: any;           
+/* ========= StudentClass task ========= */
+
+/** Interface describing the shape of the Student class instances */
+interface StudentClassInterface {
+  firstName: string;
+  lastName: string;
+  workOnHomework(): string;
+  displayName(): string;
 }
 
-interface Director extends Teacher {
-  numberOfReports: number;
+/** Interface describing the constructor signature for StudentClass */
+interface StudentConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+/** Class implementing the interfaces above */
+class StudentClass implements StudentClassInterface {
+  constructor(public firstName: string, public lastName: string) {}
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
 }
 
-function printTeacher({ firstName, lastName }: { firstName: string, lastName: string }): string {
-  return `${firstName}. ${lastName}`;
-}
+/** Optional: use the constructor interface as a type for the class itself */
+const Student: StudentConstructor = StudentClass;
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
-
-const director1: Director = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
-
-console.log(director1);
-console.log(teacher3);
-
-console.log(printTeacher({ firstName: "John", lastName: "Doe" }));
+/* Quick sanity checks (can be removed): */
+const student1 = new Student("Azeezah", "Abdulazeez");
+console.log(student1.displayName());      // "Azeezah"
+console.log(student1.workOnHomework());   // "Currently working"
