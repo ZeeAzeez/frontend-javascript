@@ -15,7 +15,13 @@ interface StudentConstructor {
 
 /** Class implementing the interfaces above */
 class StudentClass implements StudentClassInterface {
-  constructor(public firstName: string, public lastName: string) {}
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
   workOnHomework(): string {
     return "Currently working";
