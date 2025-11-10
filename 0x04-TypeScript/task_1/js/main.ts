@@ -1,6 +1,4 @@
-/* ========= StudentClass task ========= */
 
-/** Interface describing the shape of the Student class instances */
 interface StudentClassInterface {
   firstName: string;
   lastName: string;
@@ -8,12 +6,12 @@ interface StudentClassInterface {
   displayName(): string;
 }
 
-/** Interface describing the constructor signature for StudentClass */
+
 interface StudentConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-/** Class implementing the interfaces above */
+
 class StudentClass {
   firstName: string;
   lastName: string;
@@ -32,10 +30,19 @@ class StudentClass {
   }
 }
 
-/** Optional: use the constructor interface as a type for the class itself */
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
+}
 const Student: StudentConstructor = StudentClass;
 
-/* Quick sanity checks (can be removed): */
+
+
+console.log(printTeacher("John", "Doe")); 
+
 const student1 = new Student("Azeezah", "Abdulazeez");
-console.log(student1.displayName());      // "Azeezah"
-console.log(student1.workOnHomework());   // "Currently working"
+console.log(student1.displayName());     
+console.log(student1.workOnHomework());   
