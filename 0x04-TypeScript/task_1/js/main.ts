@@ -34,14 +34,14 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName.charAt(0)}. ${lastName}`;
+function printTeacher({ firstName, lastName }: { firstName: string, lastName: string }): string {
+  return `${firstName[0]}. ${lastName}`;
 }
 const Student: StudentConstructor = StudentClass;
 
 
 
-console.log(printTeacher("John", "Doe")); 
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); 
 
 const student1 = new Student("Azeezah", "Abdulazeez");
 console.log(student1.displayName());     
