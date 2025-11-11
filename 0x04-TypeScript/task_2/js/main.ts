@@ -40,18 +40,17 @@ function createEmployee(salary: number): DirectorInterface | TeacherInterface {
   return new Director();
 }
 
-function isDirector(employee: DirectorInterface | TeacherInterface): employee is DirectorInterface {
+export function isDirector(employee: DirectorInterface | TeacherInterface): employee is DirectorInterface {
     return employee instanceof Director;
 }
 
-function executeWork(employee: DirectorInterface | TeacherInterface): void {
+function executeWork(employee: DirectorInterface | TeacherInterface): string {
     if (isDirector(employee)) {
-        console.log(employee.workDirectorTasks());
+        return employee.workDirectorTasks();
     } else {
-        console.log(employee.workTeacherTasks());
+        return employee.workTeacherTasks();
     }
 }
 
-// Test the functions as expected
-executeWork(createEmployee(200));
-executeWork(createEmployee(1000)); 
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000))); 
