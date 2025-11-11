@@ -44,15 +44,14 @@ function isDirector(employee: DirectorInterface | TeacherInterface): employee is
     return employee instanceof Director;
 }
 
-function executeWork(employee: DirectorInterface | TeacherInterface): string {
-    if (isDirector(employee)){
-        return employee.workDirectorTasks();
-    }
-    else {
-        return employee.workTeacherTasks();
+function executeWork(employee: DirectorInterface | TeacherInterface): void {
+    if (isDirector(employee)) {
+        console.log(employee.workDirectorTasks());
+    } else {
+        console.log(employee.workTeacherTasks());
     }
 }
-// Test createEmployee function
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee(500)); 
+
+// Test the functions as expected
+executeWork(createEmployee(200));
+executeWork(createEmployee(1000)); 
