@@ -1,10 +1,10 @@
-interface DirectorInterface{
+interface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
   workDirectorTasks(): string;
 }
 
-interface TeacherInterface{
+interface TeacherInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
   workTeacherTasks(): string;
@@ -33,15 +33,14 @@ class Teacher implements TeacherInterface{
     return "Getting to work"
   }
 }
-function createEmployee(salary: number | string): DirectorInterface | TeacherInterface {
-  if (typeof salary === 'number' && salary < 500) {
+function createEmployee(salary: number): DirectorInterface | TeacherInterface {
+  if (salary < 500) {
     return new Teacher();
-  } else {
-    return new Director();
   }
+  return new Director();
 }
 
 // Test createEmployee function
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
-console.log(createEmployee('$500')); 
+console.log(createEmployee(500)); 
